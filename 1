@@ -1,0 +1,31 @@
+from flask import Flask , render_template
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///newflask.db'
+db = SQLAlchemy(app)
+
+
+#class Post(db.Model):
+
+@app.route("/main")
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/WesternStars")
+def Western_Stars():
+    return render_template("Western_Stars.html")
+
+
+@app.route("/RuStreetwear")
+def Ru_Streetwear():
+    return render_template("Ru_Streetwear.html")
+
+@app.route("/CISStars")
+def CIS_Stars():
+    return render_template("CIS_Stars.html")
+
+if __name__ == '__main__':
+    app.run(debug=True)
